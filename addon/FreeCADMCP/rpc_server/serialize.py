@@ -40,11 +40,11 @@ def serialize_shape(shape):
 def serialize_view_object(view):
     if view is None:
         return None
-    return {
-        "ShapeColor": serialize_value(view.ShapeColor),
-        "Transparency": view.Transparency,
-        "Visibility": view.Visibility,
-    }
+    result = {}
+    for attr in ['ShapeColor', 'Transparency', 'Visibility']:
+        if hasattr(view, attr):
+            result[attr] = serialize_value(getattr(view, attr)) if attr == 'ShapeColor' else getattr(view, attr)
+    return result
 
 
 def serialize_object(obj):
