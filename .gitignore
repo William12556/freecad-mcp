@@ -19,3 +19,7 @@ build/
 # Logs
 *.log
 **/*.log
+
+.obsidian/
+10000
+.zsh_history
